@@ -69,7 +69,7 @@ async function submitform(mkt) {
             buildTable(mkt);
         }
     }
-    xhr.open('POST', 'https://b1thhkvj25.execute-api.ap-northeast-2.amazonaws.com/stocks/datalist/');
-    xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
-    xhr.send(jsonData);
+    xhr.open('GET', 'https://b1thhkvj25.execute-api.ap-northeast-2.amazonaws.com/stocks/datalist?MKT=KOSPI',true);
+    //xhr.setRequestHeader('Content-Type', 'application/json');
+    xhr.send();
 }
