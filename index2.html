@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-180658969-1"></script>
+    <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'UA-180658969-1');
+    </script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>코스닥</title>
+    <script src="info.js"></script>
+    <link rel="shortcut icon" href="#">
+    <link rel="stylesheet" href="style.css">
+    <style>
+        @media all and (max-width: 800px) { 
+            .w{
+                width: 800px;
+            }
+        }
+        @media all and (min-width: 800px) { 
+
+            .w{
+                width: 800px; position:absolute;  left:50%; margin-left: -400px;
+            }
+        }
+        at{
+            font-size: 14px;          
+            margin-left: 4px;
+            margin-right: 4px;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="container" class="w">
+        <div id="menu" class="m">
+            <h3>
+                <ol>
+                <li><a href="index.html">소개</a></li>
+                <li><a href="index1.html">코스피</a></li>
+                <li><a href="index2.html">코스닥</a></li>
+                </ol>
+            </h3>
+        </div>
+        <div id="content" style="width:80%; height: 600px; float: left;">
+            <h1>코스닥</h1>
+            <div style="width: 100%; height: 50px; margin: 0 auto;">
+                <div style="display: inline-block;"><button onclick="submitform('KOSDAQ');">불러오기</button></div>
+                <div style="display: inline-block;"><p>[ (보고적정주가/현재주가) 나눈 비율이 가장높은 순위 30개 종목]</p></div>
+            </div>
+            <table summary="테이블" style="width: 100%; height: 2px;"
+                cellpadding="0" cellspacing="1">
+                <tr>
+                    <th><at>회사명</at></th>
+                    <th><at>CODE</at</th>
+                    <th><at>현재주가(원)</at</th>
+                    <th><at>기대 ROE%(2020/12)</at</th>
+                    <th><at>기대적정주가(원)</at</th>
+                    <th><at>보고 ROE%(2020/보고기준)</at</th>
+                    <th><at>보고적정주가(원)</at</th>
+                </tr>
+                <tbody id="table_STOCKS">
+
+
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <script>
+        buildTable('KOSDAQ');
+
+    </script>
+</body>
+</html>

@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-180658969-1"></script>
+    <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'UA-180658969-1');
+    </script>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>주식 정보</title>
+    <link rel="shortcut icon" href="#">
+    <link rel="stylesheet" href="style.css">
+    <style>
+        @media all and (max-width: 800px) { 
+            .w{
+                width: 800px;
+            }
+        }
+        @media all and (min-width: 800px) { 
+
+            .w{
+                width: 800px; position:absolute;  left:50%; margin-left: -400px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="w" id="container" >
+        <div  id="menu" class="m">
+            <h3>
+                <ol>
+                <li><a href="index.html">소개</a></li>
+                <li><a href="index1.html">코스피</a></li>
+                <li><a href="index2.html">코스닥</a></li>
+                </ol>
+            </h3>
+        </div>
+        <div id="content" style="width:80%; height: 600px; float: left;">
+            <h1>사이트 소개</h1>
+            <h5>ver 1.0</h5>
+            <p>이 사이트는 개인적으로 주식정보를 보기위해 만든 사이트 입니다.</p>
+            <p>ROE 를 기준으로 산출한 적정 주가 가격을 보여줍니다.</p>
+            <p>참고자료</p>
+            <li><a href="http://www.yes24.com/Product/Goods/86017987" target="_blank">적정주가 참고한 책</a></li>
+            <li><a href="https://www.kisrating.com/ratingsStatistics/statics_spread.do" target="_blank">한국신용평가</a></li>
+            <li><a href="https://kind.krx.co.kr/corpgeneral/corpList.do?method=loadInitPage" target="_blank">대한민국 대표 기업공시채널</a> </li>
+            <li><a href="http://comp.fnguide.com/SVO2/ASP/SVD_Main.asp?pGB=1&gicode=A005930&cID=&MenuYn=Y&ReportGB=D&NewMenuID=Y&stkGb=701" target="_blank">CompanyGuide(기업정보)</a></li>
+        </div>
+        <div id="footer" style="min-width: 100%; clear:both;">
+        <!-- 라이브리 시티 설치 코드 -->
+        <div id="lv-container" data-id="city" data-uid="MTAyMC81MTc2MC8yODI0MQ==">
+            <script type="text/javascript">
+        (function(d, s) {
+            var j, e = d.getElementsByTagName(s)[0];
+
+            if (typeof LivereTower === 'function') { return; }
+
+            j = d.createElement(s);
+            j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
+            j.async = true;
+
+            e.parentNode.insertBefore(j, e);
+        })(document, 'script');
+            </script>
+        <noscript> 라이브리 댓글 작성을 위해 JavaScript를 활성화 해주세요</noscript>
+        </div>
+        <!-- 시티 설치 코드 끝 -->
+        </div>
+    </div>
+</body>
+</html>
