@@ -54,14 +54,8 @@ function buildSelect(data) {
 
 async function submitformGET(mkt) {
 
-    var j = {
-        MKT:mkt,
-    };
-    var jsonData = JSON.stringify(j);
     
     var xhr = new XMLHttpRequest();
-
-    
     xhr.onreadystatechange = function(){
         if(xhr.readyState === xhr.DONE && xhr.status === 200){
 
@@ -69,8 +63,9 @@ async function submitformGET(mkt) {
             buildTable(mkt);
         }
     }
-    xhr.open('GET', 'https://b1thhkvj25.execute-api.ap-northeast-2.amazonaws.com/stocks/datalist?MKT=KOSPI',true);
-    //xhr.setRequestHeader('Content-Type', 'application/json');
+    var url = 'https://b1thhkvj25.execute-api.ap-northeast-2.amazonaws.com/stocks/datalist?MKT='+mkt;
+    xhr.open('GET', url,true);
+    xhr.setRequestHeader('Content-Type', 'text/plain');
     xhr.send(null);
 
 }
@@ -91,7 +86,8 @@ async function submitformPOST(mkt) {
             buildTable(mkt);
         }
     }
-    xhr.open('POST', 'https://b1thhkvj25.execute-api.ap-northeast-2.amazonaws.com/stocks/datalist');
+    var url = 'https://b1thhkvj25.execute-api.ap-northeast-2.amazonaws.com/stocks/datalist';
+    xhr.open('POST', url);
     xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
     xhr.send(jsonData);
 }
