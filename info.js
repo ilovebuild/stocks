@@ -52,7 +52,7 @@ function buildSelect(data) {
     
 }
 
-async function submitform(mkt) {
+async function submitformGET(mkt) {
 
     var j = {
         MKT:mkt,
@@ -69,14 +69,29 @@ async function submitform(mkt) {
             buildTable(mkt);
         }
     }
-    /*/
-    xhr.open('POST', 'https://b1thhkvj25.execute-api.ap-northeast-2.amazonaws.com/stocks/datalist');
-    xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
-    xhr.send(jsonData);
-
-    /*/
     xhr.open('GET', 'https://b1thhkvj25.execute-api.ap-northeast-2.amazonaws.com/stocks/datalist?MKT=KOSPI',true);
     //xhr.setRequestHeader('Content-Type', 'application/json');
     xhr.send(null);
-    /**/
+
+}
+async function submitformPOST(mkt) {
+
+    var j = {
+        MKT:mkt,
+    };
+    var jsonData = JSON.stringify(j);
+    
+    var xhr = new XMLHttpRequest();
+
+    
+    xhr.onreadystatechange = function(){
+        if(xhr.readyState === xhr.DONE && xhr.status === 200){
+
+            localStorage.setItem(mkt, xhr.responseText);
+            buildTable(mkt);
+        }
+    }
+    xhr.open('POST', 'https://b1thhkvj25.execute-api.ap-northeast-2.amazonaws.com/stocks/datalist');
+    xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+    xhr.send(jsonData);
 }
