@@ -11,6 +11,8 @@ String.prototype.lpad = function(padLen, padStr) {
     str = str.length >= padLen ? str.substring(0, padLen) : str;
     return str;
 };
+
+
 var stocks_data = {
     "KOSPI":[] ,
     "KOSDAQ":[] ,
@@ -24,32 +26,21 @@ function buildTable(mkt) {
         stocks_data[mkt] = JSON.parse(data);
     }
 
-    var data = stocks_data[mkt];
+    var datas = stocks_data[mkt];
+    if( $.fn.DataTable.isDataTable( '#dataTable' ) )
+        $('#dataTable').DataTable().destroy();
 
-    var table = document.getElementById('table_STOCKS');
-    table.innerHTML=``;
-    for (var i=0; i < data.length; i++) {
-        var code = data[i][1].toString().lpad(6,'0');
-        var row = `<tr>
-            <td><a href="http://comp.fnguide.com/SVO2/ASP/SVD_main.asp?pGB=1&gicode=A${code}&cID=&MenuYn=Y&ReportGB=&NewMenuID=11&stkGb=&strResearchYN=" target="_blank">
-                ${data[i][0]}</a></td>
-            <td>${data[i][1]}</td>
-            <td style="background-color: rgb(139, 250, 12);">${data[i][2]}</td>
-            <td>${data[i][3]}</td> 
-            <td>${data[i][4]}</td> 
-            <td>${data[i][5]}</td> 
-            <td style="background-color: rgb(245, 161, 130);">${data[i][6]}</td>
-        </tr>`;
-        table.innerHTML += row
-    }
-}
-function buildSelect(data) {
-    var table = document.getElementById('sectors');
-    for (var i=0; i < data.length; i++) {
-        var row = `<option value="${data[i].ID}">${data[i].NAME}</option>`;
-        table.innerHTML += row;
-    }
-    
+    $(document).ready(function() {
+        datatable = $('#dataTable').DataTable(
+            {
+                paging:false,
+                langthChange:false,
+                filter:false,
+                data:datas,
+            }
+        );
+    });
+
 }
 
 async function submitformGET(mkt) {

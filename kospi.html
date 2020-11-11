@@ -14,7 +14,7 @@
 </head>
 <body class="sb-nav-fixed">
     <nav class="sb-topnav navbar navbar-expand navbar-dark bg-dark">
-        <a class="navbar-brand" href="index.html">노트</a>
+        <a class="navbar-brand" href="index.html">KOSPI</a>
         <button class="btn btn-link btn-sm order-1 order-lg-0" id="sidebarToggle" href="#"><i class="fas fa-bars"></i></button>
         <!-- Navbar Search-->
         <form class="d-none d-md-inline-block form-inline ml-auto mr-0 mr-md-3 my-2 my-md-0">
@@ -51,18 +51,37 @@
         <div id="layoutSidenav_content">
             <main>
                 <div class="container-fluid">
-                    <h1 class="mt-4">사이트 소개</h1>
+                    <h1 class="mt-4"></h1>
+                    <ol class="breadcrumb mb-4">
+                        <li class="breadcrumb-item"><a href="index.html">메인</a></li>
+                        <li class="breadcrumb-item active">KOSPI</li>
+                    </ol>
                     <div class="card mb-4">
+                        <div class="card-header">
+                            <button type="button" style="margin-right: 10px;" class="btn btn-primary" onclick="submitformPOST('KOSPI');">새로불러오기</button>
+                            <i class="fas fa-table mr-1"></i>
+                             [ (보고적정주가/현재주가) 나눈 비율이 가장높은 순위 ]
+                        </div>
                         <div class="card-body">
-                            <p class="mb-0">
-                                이 사이트는 개인적으로 주식정보를 보기위해 만든 사이트 입니다.
-                                ROE 를 기준으로 산출한 적정 주가 가격을 보여줍니다.
-                            </p>
-                            <p>참고자료</p>
-                            <li><a href="http://www.yes24.com/Product/Goods/86017987" target="_blank">적정주가 참고한 책</a></li>
-                            <li><a href="https://www.kisrating.com/ratingsStatistics/statics_spread.do" target="_blank">한국신용평가</a></li>
-                            <li><a href="https://kind.krx.co.kr/corpgeneral/corpList.do?method=loadInitPage" target="_blank">대한민국 대표 기업공시채널</a> </li>
-                            <li><a href="http://comp.fnguide.com/SVO2/ASP/SVD_Main.asp?pGB=1&gicode=A005930&cID=&MenuYn=Y&ReportGB=D&NewMenuID=Y&stkGb=701" target="_blank">CompanyGuide(기업정보)</a></li>
+                            <div class="table-responsive">
+                                <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                                    <thead>
+                                        <tr>
+                                            <th>회사명</th>
+                                            <th>CODE</th>
+                                            <th>현재주가(원)</th>
+                                            <th>기대 ROE%(2020/12)</th>
+                                            <th>기대적정주가(원)</th>
+                                            <th>보고 ROE%(2020/보고기준)</at</th>
+                                            <th>보고적정주가(원)</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+
+
+                                    </tbody>
+                                </table>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -74,6 +93,10 @@
     <script src="js/scripts.js"></script>
     <script src="https://cdn.datatables.net/1.10.20/js/jquery.dataTables.min.js" crossorigin="anonymous"></script>
     <script src="https://cdn.datatables.net/1.10.20/js/dataTables.bootstrap4.min.js" crossorigin="anonymous"></script>
-    <script src="assets/demo/datatables-demo.js"></script>
+    <script src="js/info.js"></script>
+    <script>
+        buildTable("KOSPI");
+    </script>
+   
 </body>
 </html>
