@@ -36,6 +36,7 @@ function buildTable(mkt) {
                 paging:false,
                 langthChange:false,
                 filter:false,
+                ordering:false,
                 data:datas,
             }
         );
