@@ -1,4 +1,3 @@
-https://ilovebuild.github.io/stocks/
 https://ilovebuild.github.io/stocks/index.html
 https://ilovebuild.github.io/stocks/kospi.html
 https://ilovebuild.github.io/stocks/kosdaq.html
