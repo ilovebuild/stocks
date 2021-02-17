@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
     <meta name="description" content="" />
     <meta name="author" content="" />
-    <title>코스닥</title>
+    <title>코스피</title>
     <link href="css/styles.css" rel="stylesheet" />
     <link href="https://cdn.datatables.net/1.10.20/css/dataTables.bootstrap4.min.css" rel="stylesheet" crossorigin="anonymous" />
     <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/js/all.min.js" crossorigin="anonymous"></script>
@@ -60,7 +60,7 @@
                         <div class="card-header">
                             <button type="button" style="margin-right: 10px;" class="btn btn-primary" onclick="submitformPOST('KOSDAQ');">새로불러오기</button>
                             <i class="fas fa-table mr-1"></i>
-                            [ (보고적정주가/현재주가) 나눈 비율이 가장높은 30종목 순위 ]
+                            [ (보고적정주가/현재주가) 나눈 비율이 가장높은 순위 ][국채금리 투자적합적용(BBB-)]
                         </div>
                         <div class="card-body">
                             <div class="table-responsive">
@@ -69,11 +69,15 @@
                                         <tr>
                                             <th>회사명</th>
                                             <th>CODE</th>
+                                            <th>시가총액(억)</th>
+                                            <th>영업이익률(%)</th>                                   
                                             <th>현재주가(원)</th>
                                             <th>기대 ROE%(2020/12)</th>
                                             <th>기대적정주가(원)</th>
                                             <th>보고 ROE%(2020/보고기준)</at</th>
                                             <th>보고적정주가(원)</th>
+                                            <th>기대비율</th>
+                                            <th>보고비율</th>
                                         </tr>
                                     </thead>
                                     <tbody>
