@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: {{ '/sitemap.xml' | relative_url | prepend: site.url }}
+Sitemap: {{ '/sitemap.txt' | relative_url | prepend: site.url }}
