@@ -24,6 +24,12 @@ function buildTable(mkt) {
     var data = localStorage.getItem(mkt);
     if(  data ){
         stocks_data[mkt] = JSON.parse(data);
+        for(var i=0; i<stocks_data[mkt].length ;++i)
+        {
+            var name = stocks_data[mkt][i][0];
+            var code = stocks_data[mkt][i][1].toString().lpad(6,'0');
+            stocks_data[mkt][i][0] = '<a href="http://comp.fnguide.com/SVO2/ASP/SVD_main.asp?pGB=1&gicode=A'+code+'&cID=&MenuYn=Y&ReportGB=&NewMenuID=11&stkGb=&strResearchYN=" target="_blank">'+name+'</a>'
+        }
     }
 
     var datas = stocks_data[mkt];
