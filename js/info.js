@@ -70,7 +70,7 @@ async function submitformGET(mkt) {
             buildTable(mkt);
         }
     }
-    var url = 'https://b1thhkvj25.execute-api.ap-northeast-2.amazonaws.com/stocks/datalist?MKT='+mkt;
+    var url = 'https://hpcz28rerj.execute-api.ap-northeast-2.amazonaws.com/stocks/datalist?MKT='+mkt;
     //var url = 'http://localhost:8001?MKT='+mkt;
     xhr.open('GET', url,true);
     xhr.setRequestHeader('Content-Type', 'text/plain');
@@ -94,7 +94,7 @@ async function submitformPOST(mkt) {
             buildTable(mkt);
         }
     }
-    var url = 'https://b1thhkvj25.execute-api.ap-northeast-2.amazonaws.com/stocks/datalist';
+    var url = 'https://hpcz28rerj.execute-api.ap-northeast-2.amazonaws.com/stocks/datalist';
     //var url = 'http://localhost:8001?MKT='+mkt;
     xhr.open('POST', url);
     xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
