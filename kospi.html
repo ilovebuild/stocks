@@ -18,7 +18,7 @@
         gtag('js', new Date());
         gtag('config', 'UA-180658969-1');
     </script>
-    <script src="info.js?ver=1.0.1"></script>
+    <script src="info.js?ver=1.0.3"></script>
 
 </head>
 <body class="sb-nav-fixed">
@@ -68,6 +68,10 @@
                     <div class="card mb-4">
                         <div class="card-header">
                             <button type="button" style="margin-right: 10px;" class="btn btn-primary" onclick="submitformPOST('KOSPI');">새로불러오기</button>
+                            <select class="form-select " id="stockscode" aria-label=".form-select-lg example">
+                                <option selected>전체</option>
+                            </select>
+                            <br>
                             <i class="fas fa-table mr-1"></i>
                             [비율(기대예상 주가/현재주가,분기보고 주가/현재주가)][주가계산에 국채금리 (BBB-)적용]
                         </div>
@@ -128,7 +132,8 @@
     <script src="https://cdn.datatables.net/1.10.20/js/dataTables.bootstrap4.min.js" crossorigin="anonymous"></script>
     <script src="js/info.js"></script>
     <script>
-        buildTable("KOSPI");
+        buildSelect();
+        buildTable("KOSPI",true);
     </script>
    
 </body>
