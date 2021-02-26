@@ -118,7 +118,7 @@ function buildTable(mkt, reload) {
                 //ordering:false,
                 scrollY: true,
                 scrollX: true,
-                order: [[length-1, 'desc']],
+                order: [[11, 'desc']],
                 data:datas,
                 lengthMenu: [
                     [ 25, 50, 100 ],
