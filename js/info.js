@@ -183,8 +183,8 @@ async function submitformPOST(mkt) {
             buildTable(mkt,false);
         }
     }
-    //var url = 'https://hpcz28rerj.execute-api.ap-northeast-2.amazonaws.com/stocks/datalist';
-    var url = 'http://localhost:8001?MKT='+mkt;
+    var url = 'https://hpcz28rerj.execute-api.ap-northeast-2.amazonaws.com/stocks/datalist';
+    //var url = 'http://localhost:8001?MKT='+mkt;
     xhr.open('POST', url);
     xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
     xhr.send(jsonData);
