@@ -103,8 +103,9 @@ function buildTable(mkt, reload) {
             stocks_data[mkt][i][0] = '<a href="http://comp.fnguide.com/SVO2/ASP/SVD_main.asp?pGB=1&gicode=A'+code+'&cID=&MenuYn=Y&ReportGB=&NewMenuID=11&stkGb=&strResearchYN=" target="_blank">'+name+'</a>'
         }
     }
-
+    
     var datas = stocks_data[mkt];
+    var length = datas.length;
     if( $.fn.DataTable.isDataTable( '#dataTable' ) )
         $('#dataTable').DataTable().destroy();
 
@@ -117,7 +118,7 @@ function buildTable(mkt, reload) {
                 //ordering:false,
                 scrollY: true,
                 scrollX: true,
-                order: [[10, 'desc']],
+                order: [[length-1, 'desc']],
                 data:datas,
                 lengthMenu: [
                     [ 25, 50, 100 ],
@@ -182,8 +183,8 @@ async function submitformPOST(mkt) {
             buildTable(mkt,false);
         }
     }
-    var url = 'https://hpcz28rerj.execute-api.ap-northeast-2.amazonaws.com/stocks/datalist';
-    //var url = 'http://localhost:8001?MKT='+mkt;
+    //var url = 'https://hpcz28rerj.execute-api.ap-northeast-2.amazonaws.com/stocks/datalist';
+    var url = 'http://localhost:8001?MKT='+mkt;
     xhr.open('POST', url);
     xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
     xhr.send(jsonData);
