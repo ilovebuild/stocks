@@ -100,7 +100,7 @@ function buildTable(mkt, reload) {
         {
             var name = stocks_data[mkt][i][0];
             var code = stocks_data[mkt][i][1].toString().lpad(6,'0');
-            stocks_data[mkt][i][0] = '<a href="http://comp.fnguide.com/SVO2/ASP/SVD_main.asp?pGB=1&gicode=A'+code+'&cID=&MenuYn=Y&ReportGB=&NewMenuID=11&stkGb=&strResearchYN=" target="_blank">'+name+'</a>'
+            stocks_data[mkt][i][0] = '<a class="stocks_name" href="http://comp.fnguide.com/SVO2/ASP/SVD_main.asp?pGB=1&gicode=A'+code+'&cID=&MenuYn=Y&ReportGB=&NewMenuID=11&stkGb=&strResearchYN=" target="_blank">'+name+'</a>'
         }
     }
     
