@@ -100,7 +100,7 @@ function buildTable(mkt, reload) {
         {
             var name = stocks_data[mkt][i][0];
             var code = stocks_data[mkt][i][1].toString().lpad(6,'0');
-            stocks_data[mkt][i][0] = '<a class="stocks_name" href="http://comp.fnguide.com/SVO2/ASP/SVD_main.asp?pGB=1&gicode=A'+code+'&cID=&MenuYn=Y&ReportGB=&NewMenuID=11&stkGb=&strResearchYN=" target="_blank">'+name+'</a>'
+            stocks_data[mkt][i][0] = '<a href="http://comp.fnguide.com/SVO2/ASP/SVD_main.asp?pGB=1&gicode=A'+code+'&cID=&MenuYn=Y&ReportGB=&NewMenuID=11&stkGb=&strResearchYN=" target="_blank">'+name+'</a>'
         }
     }
     
@@ -172,20 +172,35 @@ async function submitformPOST(mkt) {
     };
     var jsonData = JSON.stringify(j);
     
-    
-    var xhr = new XMLHttpRequest();
 
-    
-    xhr.onreadystatechange = function(){
-        if(xhr.readyState === xhr.DONE && xhr.status === 200){
-
-            localStorage.setItem(mkt, xhr.responseText);
-            buildTable(mkt,false);
+    fetch(
+        `https://hpcz28rerj.execute-api.ap-northeast-2.amazonaws.com/stocks/datalist`,
+        {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: jsonData
         }
-    }
-    var url = 'https://hpcz28rerj.execute-api.ap-northeast-2.amazonaws.com/stocks/datalist';
-    //var url = 'http://localhost:8001?MKT='+mkt;
-    xhr.open('POST', url);
-    xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
-    xhr.send(jsonData);
+    ).then(res => res.json()
+    ).then(json => {
+        
+        console.log(json);
+
+        localStorage.setItem(mkt, JSON.stringify(json));
+        buildTable(mkt,false);
+    });
+
+    
+    // var xhr = new XMLHttpRequest();
+    // xhr.onreadystatechange = function(){
+    //     if(xhr.readyState === xhr.DONE && xhr.status === 200){
+
+    //         localStorage.setItem(mkt, xhr.responseText);
+    //         buildTable(mkt,false);
+    //     }
+    // }
+    // var url = 'https://hpcz28rerj.execute-api.ap-northeast-2.amazonaws.com/stocks/datalist';
+    // //var url = 'http://localhost:8001?MKT='+mkt;
+    // xhr.open('POST', url);
+    // xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+    // xhr.send(jsonData);
 }
