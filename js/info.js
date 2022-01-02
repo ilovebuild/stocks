@@ -98,6 +98,7 @@ function buildTable(mkt, reload) {
         stocks_data[mkt] = JSON.parse(data);
         for(var i=0; i<stocks_data[mkt].length ;++i)
         {
+            if(stocks_data[mkt][i].length<2)continue;
             var name = stocks_data[mkt][i][0];
             var code = stocks_data[mkt][i][1].toString().lpad(6,'0');
             stocks_data[mkt][i][0] = '<a href="http://comp.fnguide.com/SVO2/ASP/SVD_main.asp?pGB=1&gicode=A'+code+'&cID=&MenuYn=Y&ReportGB=&NewMenuID=11&stkGb=&strResearchYN=" target="_blank">'+name+'</a>'
@@ -167,14 +168,29 @@ async function submitformPOST(mkt) {
     }
     
     var j = {
-        MKT:mkt,
-        CODE:code,
+        query:`query {
+            stocks(mkt:\"${mkt}\",code:0){
+                name
+                code
+                total_amount
+                margin
+                rate
+                price
+                exp_roe_rt
+                exp_price_rt
+                ratio_exp_rt
+                ratio_report_rt
+                exp_ratio
+                report_ratio
+            }
+        }`
     };
     var jsonData = JSON.stringify(j);
-    
-
+    console.log(jsonData);
+    let url = `https://hpcz28rerj.execute-api.ap-northeast-2.amazonaws.com/stocks/stockslist`;
+    //let url = `http://localhost:8001/`;
     fetch(
-        `https://hpcz28rerj.execute-api.ap-northeast-2.amazonaws.com/stocks/datalist`,
+        url,
         {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
@@ -183,13 +199,29 @@ async function submitformPOST(mkt) {
     ).then(res => res.json()
     ).then(json => {
         
-        console.log(json);
+        console.log(json.data.stocks);
 
-        localStorage.setItem(mkt, JSON.stringify(json));
+        let stocks = []
+
+        for(var i in json.data.stocks){
+            let objs = json.data.stocks[i]
+            let array = [];
+            for(var key in objs){
+                array.push(objs[key]);
+            }
+            stocks.push(array);
+        }
+        console.log(stocks);
+        localStorage.setItem(mkt, JSON.stringify(stocks));
         buildTable(mkt,false);
     });
 
-    
+
+    // var j = {
+    //     MKT:mkt,
+    //     CODE:code,
+    // };
+    // var jsonData = JSON.stringify(j);
     // var xhr = new XMLHttpRequest();
     // xhr.onreadystatechange = function(){
     //     if(xhr.readyState === xhr.DONE && xhr.status === 200){
