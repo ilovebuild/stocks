@@ -169,7 +169,7 @@ async function submitformPOST(mkt) {
     
     var j = {
         query:`query {
-            stocks(mkt:\"${mkt}\",code:0){
+            stocks(mkt:\"${mkt}\",code:${code}){
                 name
                 code
                 total_amount
