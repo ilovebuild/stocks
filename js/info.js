@@ -187,7 +187,7 @@ async function submitformPOST(mkt) {
     };
     var jsonData = JSON.stringify(j);
     console.log(jsonData);
-    let url = `https://hpcz28rerj.execute-api.ap-northeast-2.amazonaws.com/stocks/stockslist`;
+    let url = `https://exq5s5b94k.execute-api.ap-northeast-2.amazonaws.com/stocks/list`;
     //let url = `http://localhost:8001/`;
     fetch(
         url,
